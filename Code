@@ -4,17 +4,23 @@
 import groovyx.net.http.RESTClient
 import groovy.json.JsonSlurper
 
-def githubUrl = "https://github.com/YOUR_USERNAME/YOUR_REPO_NAME/blob/script/iipm.json"  // Replace with your GitHub URL
 def githubUsername = "YOUR_GITHUB_USERNAME"
 def githubPassword = "YOUR_GITHUB_PASSWORD"
+def owner = "OWNER_USERNAME" // Replace with the owner's GitHub username
+def repo = "REPO_NAME" // Replace with the repository name
+def branch = "script"
+def fileName = "iipm.json"
 def wordToFind = "abacus"
 
-def client = new RESTClient(githubUrl)
-client.auth.basic(githubUsername, githubPassword)
+def apiUrl = "https://api.github.com/repos/$owner/$repo/contents/$fileName?ref=$branch"
+
+def client = new RESTClient(apiUrl)
+client.headers['Authorization'] = "Basic " + "${githubUsername}:${githubPassword}".bytes.encodeBase64().toString()
+
 def response = client.get()
 
 if (response.status == 200) {
-    def fileContents = new String(response.data.getBytes(), "UTF-8")
+    def fileContents = new String(response.data.content.decodeBase64())
     def jsonSlurper = new JsonSlurper()
     def jsonObject = jsonSlurper.parseText(fileContents)
 
