@@ -1,3 +1,11 @@
+@Grapes([
+    @Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.7.1'),
+    @Grab(group='commons-logging', module='commons-logging', version='1.2'),
+    @Grab(group='org.apache.httpcomponents', module='httpclient', version='4.5.13')
+])
+
+import groovyx.net.http.RESTClient
+
 import java.net.HttpURLConnection
 import java.io.BufferedReader
 import java.io.InputStreamReader
