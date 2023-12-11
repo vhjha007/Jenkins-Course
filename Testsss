@@ -1,0 +1,9 @@
+def jiraUserName = "yourUsername"
+def jiraPassword = "yourPassword"
+
+// Encode credentials using Base64
+def credentials = "${jiraUserName}:${jiraPassword}".getBytes('ISO-8859-1')
+def base64Credentials = credentials.encodeBase64().toString('UTF-8')
+
+// Set Authorization header in your HTTP request
+connection.setRequestProperty("Authorization", "Basic ${base64Credentials}")
