@@ -1,9 +1,6 @@
-def jiraUserName = "yourUsername"
-def jiraPassword = "yourPassword"
+Big thanks for being an amazing leader! Your family-like vibe, support during tough times,
+constant appreciation, and constructive feedback make our workplace special.
+It's not just a job; it's a place where we feel supported and inspired. Lucky to have you as our manager!
 
-// Encode credentials using Base64
-def credentials = "${jiraUserName}:${jiraPassword}".getBytes('ISO-8859-1')
-def base64Credentials = credentials.encodeBase64().toString('UTF-8')
-
-// Set Authorization header in your HTTP request
-connection.setRequestProperty("Authorization", "Basic ${base64Credentials}")
+Thank you for your exceptional leadership. Treating the team like family, your unwavering support during tough times, consistent appreciation, and constructive feedback have made a profound impact.
+Your unique approach creates a workplace that is both supportive and inspiring. Grateful to be under your guidance.
